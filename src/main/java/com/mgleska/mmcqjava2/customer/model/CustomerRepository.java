@@ -1,0 +1,5 @@
+package com.mgleska.mmcqjava2.customer.model;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface CustomerRepository extends CrudRepository<Customer, Integer> {}

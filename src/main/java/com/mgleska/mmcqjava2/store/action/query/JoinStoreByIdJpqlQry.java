@@ -11,7 +11,7 @@ public class JoinStoreByIdJpqlQry {
 
     public JoinJpqlDto joinById(String foreignSelector, String alias) {
         if (alias == null || alias.isEmpty()) {
-            var tmp = foreignSelector.split("[.]");
+            var tmp = Store.class.getName().split("[.]");
             alias = tmp[tmp.length - 1];
         }
 

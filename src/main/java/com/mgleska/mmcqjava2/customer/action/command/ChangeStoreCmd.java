@@ -12,8 +12,6 @@ import jakarta.validation.constraints.Positive;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
-
 @Service
 public class ChangeStoreCmd {
 
@@ -48,7 +46,7 @@ public class ChangeStoreCmd {
             throw new AppNeverException("Customer is not authenticated.");
         }
 
-        var customer = this.customerRepository.findById(Objects.requireNonNull(authToken.getCustomerId())).orElse(null);
+        var customer = this.customerRepository.findById(authToken.getCustomerId()).orElse(null);
         if (customer == null) {
             throw new AppValidationException("jwt.uid", "Customer not found.");
         }

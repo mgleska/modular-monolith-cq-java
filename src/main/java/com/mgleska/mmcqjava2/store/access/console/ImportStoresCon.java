@@ -1,11 +1,13 @@
 package com.mgleska.mmcqjava2.store.access.console;
 
+import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
 import com.mgleska.mmcqjava2.store.action.command.ImportStoresCmd;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine.Command;
 
 @Component
 @Command(name = "store:import", description = "Command to import stores from external dictionary (API)", mixinStandardHelpOptions = true)
+@SkipCoverageAkaGenerated
 public class ImportStoresCon implements Runnable  {
 
     private final ImportStoresCmd importStoresCmd;

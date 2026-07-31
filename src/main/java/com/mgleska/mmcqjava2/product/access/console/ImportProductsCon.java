@@ -1,11 +1,13 @@
 package com.mgleska.mmcqjava2.product.access.console;
 
 import com.mgleska.mmcqjava2.product.action.command.ImportProductsCmd;
+import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine.Command;
 
 @Component
 @Command(name = "product:import", description = "Command to import products from external dictionary (API).", mixinStandardHelpOptions = true)
+@SkipCoverageAkaGenerated
 public class ImportProductsCon implements Runnable  {
 
     private final ImportProductsCmd importProductsCmd;

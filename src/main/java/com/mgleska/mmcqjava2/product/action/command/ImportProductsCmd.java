@@ -1,6 +1,7 @@
 package com.mgleska.mmcqjava2.product.action.command;
 
 import com.mgleska.mmcqjava2.product.model.Product;
+import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
+@SkipCoverageAkaGenerated
 public class ImportProductsCmd {
 
     private final EntityManager em;

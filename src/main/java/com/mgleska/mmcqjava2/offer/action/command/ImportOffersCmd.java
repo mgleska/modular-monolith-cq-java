@@ -2,6 +2,7 @@ package com.mgleska.mmcqjava2.offer.action.command;
 
 import com.mgleska.mmcqjava2.offer.model.Offer;
 import com.mgleska.mmcqjava2.product.action.query.GetProductByEansQry;
+import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
 import com.mgleska.mmcqjava2.shared.exception.AppValidationException;
 import com.mgleska.mmcqjava2.store.action.query.GetStoreByExternalIdQry;
 import jakarta.persistence.EntityManager;
@@ -12,6 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@SkipCoverageAkaGenerated
 public class ImportOffersCmd {
 
     private final EntityManager em;

@@ -3,6 +3,7 @@ package com.mgleska.mmcqjava2.product.action.command;
 import com.mgleska.mmcqjava2.product.model.Product;
 import com.mgleska.mmcqjava2.product.model.ProductQuantity;
 import com.mgleska.mmcqjava2.product.model.ProductRepository;
+import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
 import com.mgleska.mmcqjava2.store.action.query.GetStoreListQry;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -12,6 +13,7 @@ import java.util.Random;
 import java.util.stream.StreamSupport;
 
 @Service
+@SkipCoverageAkaGenerated
 public class ImportQuantityCmd {
 
     private final GetStoreListQry getStoreListQry;

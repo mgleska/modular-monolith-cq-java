@@ -1,12 +1,14 @@
 package com.mgleska.mmcqjava2.offer.access.console;
 
 import com.mgleska.mmcqjava2.offer.action.command.ImportOffersCmd;
+import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
 @Component
 @Command(name = "offer:import", description = "Command to import offers for given store.", mixinStandardHelpOptions = true)
+@SkipCoverageAkaGenerated
 public class ImportOffersCon implements Runnable  {
 
     private final ImportOffersCmd importOffersCmd;

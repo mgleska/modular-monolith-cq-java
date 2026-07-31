@@ -30,6 +30,7 @@
         <java.version>25</java.version>
         <spring-modulith.version>2.1.0</spring-modulith.version>
         <flyway.version>12.3.0</flyway.version>
+        <jacoco.skip>true</jacoco.skip>
     </properties>
     <dependencies>
         <dependency>
@@ -165,6 +166,25 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>12.10.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.15</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

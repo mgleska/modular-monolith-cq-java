@@ -1,5 +1,6 @@
 package com.mgleska.mmcqjava2.store.action.command;
 
+import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
 import com.mgleska.mmcqjava2.store.model.Store;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@SkipCoverageAkaGenerated
 public class ImportStoresCmd {
 
     private final EntityManager em;

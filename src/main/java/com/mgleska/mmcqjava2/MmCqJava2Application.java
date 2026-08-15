@@ -31,7 +31,7 @@ public class MmCqJava2Application implements CommandLineRunner {
         this.customExceptionHandler = customExceptionHandler;
     }
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         boolean isCliContext = hasCliArgs(args);
 
         ConfigurableApplicationContext context = new SpringApplicationBuilder(MmCqJava2Application.class)

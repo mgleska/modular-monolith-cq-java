@@ -8,8 +8,8 @@ public class AppValidationException extends IllegalArgumentException {
     private final String field;
 
     public AppValidationException(String field, String message) {
-        this.field = field;
         super(message);
+        this.field = field;
     }
 
     public String getField() {

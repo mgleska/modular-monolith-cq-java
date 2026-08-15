@@ -43,7 +43,7 @@ public class TokenService {
             JWTVerifier verifier = JWT.require(algorithm).build();
             decodedJWT = verifier.verify(jwt);
         }
-        catch (JWTVerificationException _) {
+        catch (JWTVerificationException e) {
             throw new AppAuthException("JWT token is invalid or expired.");
         }
 

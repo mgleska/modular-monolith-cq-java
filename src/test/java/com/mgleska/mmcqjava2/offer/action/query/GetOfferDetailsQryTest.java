@@ -137,7 +137,7 @@ class GetOfferDetailsQryTest {
     @ParameterizedTest
     @CsvSource({
         ", UNKNOWN",
-        "0, UNKNOWN",
+        "0, AVAILABLE_LOW",
         "1, AVAILABLE_LOW",
         "4999, AVAILABLE_LOW",
         "5000, AVAILABLE",

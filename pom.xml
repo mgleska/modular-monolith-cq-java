@@ -31,6 +31,7 @@
         <spring-modulith.version>2.1.0</spring-modulith.version>
         <flyway.version>12.3.0</flyway.version>
         <jacoco.skip>true</jacoco.skip>
+        <maven.compiler.proc>full</maven.compiler.proc>
     </properties>
     <dependencies>
         <dependency>
@@ -113,6 +114,11 @@
             <groupId>info.picocli</groupId>
             <artifactId>picocli-spring-boot-starter</artifactId>
             <version>4.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <dependencyManagement>

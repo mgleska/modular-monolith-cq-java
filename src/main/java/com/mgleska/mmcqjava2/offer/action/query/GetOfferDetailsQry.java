@@ -55,11 +55,13 @@ public class GetOfferDetailsQry {
 
         var product = getProductDetailsQry.handle(offer.getProductId(), storeId);
         var quantityLevel = QuantityLevelEnum.UNKNOWN;
-        if (product.quantity() != null && product.quantity() >= QUANTITY_LEVEL) {
+        if (product.quantity() != null) {
+            if (product.quantity() >= QUANTITY_LEVEL) {
             quantityLevel = QuantityLevelEnum.AVAILABLE;
         }
-        else if (product.quantity() != null && product.quantity() > 0) {
+            else {
             quantityLevel = QuantityLevelEnum.AVAILABLE_LOW;
+            }
         }
 
         return new ResultDto(

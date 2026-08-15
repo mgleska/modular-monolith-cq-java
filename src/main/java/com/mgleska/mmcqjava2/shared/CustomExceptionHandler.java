@@ -6,6 +6,7 @@ import com.mgleska.mmcqjava2.shared.exception.AppValidationException;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import picocli.CommandLine;
 import tools.jackson.databind.SerializationFeature;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
+@Slf4j
 public class CustomExceptionHandler implements CommandLine.IExecutionExceptionHandler {
 
     public record FieldError(
@@ -125,15 +127,12 @@ public class CustomExceptionHandler implements CommandLine.IExecutionExceptionHa
 
         String message;
         if (ex instanceof AppValidationException validationEx) {
-            message = "[ERROR] " + validationEx.getField() + ": " + validationEx.getMessage();
+            message = validationEx.getField() + ": " + validationEx.getMessage();
         }
         else {
-            message = "[ERROR] " + ex.getMessage();
+            message = ex.getMessage();
         }
-        if (System.console() != null) {
-            message = "\u001B[31m" + message + "\u001B[0m";
-        }
-        System.out.println(message);
+        log.error(message, ex);
 
         return cmd.getExitCodeExceptionMapper() != null
             ? cmd.getExitCodeExceptionMapper().getExitCode(ex)

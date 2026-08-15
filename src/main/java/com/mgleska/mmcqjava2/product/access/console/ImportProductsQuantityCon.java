@@ -2,12 +2,14 @@ package com.mgleska.mmcqjava2.product.access.console;
 
 import com.mgleska.mmcqjava2.product.action.command.ImportQuantityCmd;
 import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine.Command;
 
 @Component
 @Command(name = "product:quantity", description = "Command to import quantities for each products in all stores (API).", mixinStandardHelpOptions = true)
 @SkipCoverageAkaGenerated
+@Slf4j
 public class ImportProductsQuantityCon implements Runnable  {
 
     private final ImportQuantityCmd action;
@@ -18,8 +20,8 @@ public class ImportProductsQuantityCon implements Runnable  {
 
     @Override
     public void run() {
-        System.out.println("Importing product quantity...");
+        log.info("Importing product quantity...");
         action.handle();
-        System.out.println("Product quantity imported successfully!");
+        log.info("Product quantity imported successfully!");
     }
 }

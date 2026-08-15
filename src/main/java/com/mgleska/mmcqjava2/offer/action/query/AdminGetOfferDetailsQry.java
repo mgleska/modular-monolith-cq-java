@@ -50,7 +50,7 @@ public class AdminGetOfferDetailsQry {
             offer.getProductName() != null ? offer.getProductName() : (product != null ? product.name() : ""),
             offer.getPrice(),
             offer.getLowestPrice(),
-            product != null ? (product.imageUrl() != null ? product.imageUrl() : "" ) : "",
+            product != null && product.imageUrl() != null ? product.imageUrl() : "",
             product != null ? product.quantity() : null
         );
     }

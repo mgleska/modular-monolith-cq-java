@@ -26,13 +26,21 @@
         <tag/>
         <url/>
     </scm>
+
+
     <properties>
         <java.version>21</java.version>
         <spring-modulith.version>2.1.0</spring-modulith.version>
         <flyway.version>12.3.0</flyway.version>
         <jacoco.skip>true</jacoco.skip>
         <maven.compiler.proc>full</maven.compiler.proc>
+        <!-- fix CVE-2026-49844 -->
+        <log4j2.version>2.25.5</log4j2.version>
+        <!-- fix CVE-2026-53434 -->
+        <tomcat.version>11.0.24</tomcat.version>
     </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,7 +106,7 @@
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
-            <version>4.5.2</version>
+            <version>4.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -108,7 +116,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>3.0.2</version>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>info.picocli</groupId>
@@ -121,6 +129,8 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -130,8 +140,21 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <!-- for com.auth0:java-jwt, fix CVE-2026-54515 -->
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.21.5</version>
+            </dependency>
+            <dependency>
+                <!-- for springdoc-openapi-starter-webmvc-ui, fix GHSA-55q2-fjhq-7xh7 -->
+                <groupId>org.webjars</groupId>
+                <artifactId>swagger-ui</artifactId>
+                <version>5.32.13</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <build>
         <plugins>
@@ -188,6 +211,21 @@
                         <phase>test</phase>
                         <goals>
                             <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>13.0.0</version>
+                <configuration>
+                    <nvdDatafeedUrl>https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-{0}.json.gz</nvdDatafeedUrl>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>

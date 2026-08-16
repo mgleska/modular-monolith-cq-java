@@ -312,6 +312,7 @@ components:
         customerId:
           type: integer
           format: int32
+          minimum: 0
       required:
       - customerId
     com.mgleska.mmcqjava2.customer.action.command.LoginCmd.ResultDto:
@@ -328,6 +329,7 @@ components:
         storeId:
           type: integer
           format: int32
+          minimum: 0
       required:
       - storeId
     com.mgleska.mmcqjava2.customer.action.command.ChangeStoreCmd.ResultDto:
@@ -445,6 +447,7 @@ components:
         page:
           type: integer
           format: int32
+          minimum: 0
     com.mgleska.mmcqjava2.offer.action.query.GetOfferListQry.ResultDto:
       type: object
       properties:

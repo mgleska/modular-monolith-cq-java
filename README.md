@@ -14,7 +14,7 @@
 
 1. Application built using the **Spring Boot** framework.
 2. Using **Jakarta Validation** to process input data received by the API.
-3. Using Spring Security. It allows relatively simple use of ready-made solutions for connecting to various identity providers (e.g. OAuth2, SAML).
+3. Using **Spring Security**. It allows relatively simple use of ready-made solutions for connecting to various identity providers (e.g. OAuth2, SAML).
 4. Entity versioning (know also as "optimistic locking") for checking consistency between data presented to user (frontend side) and actual state of entity in database (backend side).
 5. Database deadlock avoidance.
 6. Zero CRUD, zero PUT/PATCH/DELETE.

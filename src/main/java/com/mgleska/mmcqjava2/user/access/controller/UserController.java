@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/api/admin/user/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @SecurityRequirements
+    @SecurityRequirements({})
     public AdminLoginCmd.ResultDto login(@RequestBody @Valid AdminLoginCmd.ParamDto dto) throws AppValidationException {
         return loginCmd.handle(dto);
     }

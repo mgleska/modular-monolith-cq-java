@@ -58,6 +58,26 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/com.mgleska.mmcqjava2.customer.action.command.ChangeStoreCmd.ResultDto"
+  /api/admin/user/trigger-mail:
+    post:
+      tags:
+      - Admin
+      operationId: triggerMail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/com.mgleska.mmcqjava2.user.action.command.MailDemoCmd.ParamDto"
+        required: true
+      responses:
+        "422":
+          description: Unprocessable Content
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/com.mgleska.mmcqjava2.shared.CustomExceptionHandler.ErrorResponse"
+        "200":
+          description: OK
   /api/admin/user/login:
     post:
       tags:
@@ -197,6 +217,39 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/com.mgleska.mmcqjava2.offer.action.query.GetOfferListQry.ResultDto"
+  /api/admin/user/mail-status:
+    get:
+      tags:
+      - Admin
+      operationId: mailDeliveryStatus
+      parameters:
+      - name: ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int64
+      responses:
+        "422":
+          description: Unprocessable Content
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/com.mgleska.mmcqjava2.shared.CustomExceptionHandler.ErrorResponse"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+                  enum:
+                  - DELIVERED
+                  - IN_PROGRESS
+                  - FAILED
   /api/admin/offer/{id}:
     get:
       tags:
@@ -329,7 +382,7 @@ components:
         storeId:
           type: integer
           format: int32
-          minimum: 0
+          exclusiveMinimum: 0
       required:
       - storeId
     com.mgleska.mmcqjava2.customer.action.command.ChangeStoreCmd.ResultDto:
@@ -340,6 +393,16 @@ components:
           minLength: 1
       required:
       - token
+    com.mgleska.mmcqjava2.user.action.command.MailDemoCmd.ParamDto:
+      type: object
+      properties:
+        email:
+          type: string
+        message:
+          type: string
+      required:
+      - email
+      - message
     com.mgleska.mmcqjava2.user.action.command.AdminLoginCmd.ParamDto:
       type: object
       properties:
@@ -447,7 +510,7 @@ components:
         page:
           type: integer
           format: int32
-          minimum: 0
+          exclusiveMinimum: 0
     com.mgleska.mmcqjava2.offer.action.query.GetOfferListQry.ResultDto:
       type: object
       properties:

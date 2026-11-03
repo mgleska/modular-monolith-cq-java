@@ -11,8 +11,8 @@ then
     ./mvnw clean package -DskipTests
 fi
 
-java -jar target/mm-cq-java-2-0.0.1-SNAPSHOT.jar &
-sleep 5
+java -Dspring.flyway.enabled=true -jar target/mm-cq-java-2-0.0.1-SNAPSHOT.jar &
+sleep 8
 
 # preparing demo data
 java -jar target/mm-cq-java-2-0.0.1-SNAPSHOT.jar store:import

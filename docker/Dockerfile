@@ -5,7 +5,8 @@ RUN apt-get -y update && \
     apt-get -y autoremove && \
     apt-get clean && \
     mkdir /app && \
-    chown -R ubuntu:ubuntu /app
+    mkdir /home/ubuntu/.m2 && \
+    chown -R ubuntu:ubuntu /home/ubuntu/.m2
 
 WORKDIR /app
 

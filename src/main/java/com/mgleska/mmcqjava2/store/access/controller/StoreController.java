@@ -4,7 +4,6 @@ import com.mgleska.mmcqjava2.shared.exception.AppValidationException;
 import com.mgleska.mmcqjava2.store.action.query.GetStoreDetailsQry;
 import com.mgleska.mmcqjava2.store.action.query.GetStoreListQry;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +19,12 @@ public class StoreController {
         this.getStoreListQry = getStoreListQry;
     }
 
-    @GetMapping(value = "/api/store/list", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/store/list")
     public List<GetStoreListQry.ListItemDto> list() throws AppValidationException {
         return getStoreListQry.handle();
     }
 
-    @GetMapping(value = "/api/store/{id:[0-9]+}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/store/{id:[0-9]+}")
     public GetStoreDetailsQry.ResultDto details(@PathVariable int id) throws AppValidationException {
         return getStoreDetailsQry.handle(id);
     }

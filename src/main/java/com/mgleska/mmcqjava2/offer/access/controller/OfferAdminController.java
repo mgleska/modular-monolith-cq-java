@@ -25,17 +25,17 @@ public class OfferAdminController {
         this.changeVisibilityCmd = changeVisibilityCmd;
     }
 
-    @GetMapping(value = "/api/admin/offer/filters", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/admin/offer/filters")
     public AdminGetListFiltersQry.ResultDto filters() {
         return adminGetListFiltersQry.handle();
     }
 
-    @GetMapping(value = "/api/admin/offer/list", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/admin/offer/list")
     public AdminGetOfferListQry.ResultDto list(@Valid AdminGetOfferListQry.ParamDto queryParam) {
         return adminGetOfferListQry.handle(queryParam);
     }
 
-    @GetMapping(value = "/api/admin/offer/{id:[0-9]+}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/admin/offer/{id:[0-9]+}")
     public AdminGetOfferDetailsQry.ResultDto details(@PathVariable int id) {
         return adminGetOfferDetailsQry.handle(id);
     }

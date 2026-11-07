@@ -58,6 +58,26 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/com.mgleska.mmcqjava2.customer.action.command.ChangeStoreCmd.ResultDto"
+  /api/admin/user/trigger-push:
+    post:
+      tags:
+      - Admin
+      operationId: triggerPush
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/com.mgleska.mmcqjava2.user.action.command.PushDemoCmd.ParamDto"
+        required: true
+      responses:
+        "422":
+          description: Unprocessable Content
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/com.mgleska.mmcqjava2.shared.CustomExceptionHandler.ErrorResponse"
+        "200":
+          description: OK
   /api/admin/user/trigger-mail:
     post:
       tags:
@@ -393,6 +413,16 @@ components:
           minLength: 1
       required:
       - token
+    com.mgleska.mmcqjava2.user.action.command.PushDemoCmd.ParamDto:
+      type: object
+      properties:
+        phoneNumber:
+          type: integer
+          format: int64
+        message:
+          type: string
+      required:
+      - message
     com.mgleska.mmcqjava2.user.action.command.MailDemoCmd.ParamDto:
       type: object
       properties:

@@ -1,5 +1,6 @@
 package com.mgleska.mmcqjava2.mailer.support;
 
+import com.mgleska.mmcqjava2.shared.annotation.SkipCoverageAkaGenerated;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +8,7 @@ import java.util.Random;
 
 @Service
 @Slf4j
+@SkipCoverageAkaGenerated
 public class RemoteDeliveryService {
 
     private final Random random = new Random();

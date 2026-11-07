@@ -5,7 +5,6 @@ import com.mgleska.mmcqjava2.offer.action.query.GetOfferListQry;
 import com.mgleska.mmcqjava2.shared.exception.AppValidationException;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,12 +19,12 @@ public class OfferController {
         this.getOfferDetailsQry = getOfferDetailsQry;
     }
 
-    @GetMapping(value = "/api/offer/list", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/offer/list")
     public GetOfferListQry.ResultDto list(@Valid GetOfferListQry.ParamDto queryParam) {
         return getOfferListQry.handle(queryParam);
     }
 
-    @GetMapping(value = "/api/offer/{id:[0-9]+}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/offer/{id:[0-9]+}")
     public GetOfferDetailsQry.ResultDto details(@PathVariable int id) throws AppValidationException {
         return getOfferDetailsQry.handle(id);
     }
